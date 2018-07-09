@@ -3,6 +3,7 @@ plugins {
 }
 
 apply plugin: 'application'
+apply plugin: 'jacoco'
 mainClassName = "com.olipro.utils.Coverify"
 
 group 'com.olipro.utils'
@@ -24,6 +25,12 @@ dependencies {
 
 test {
     useTestNG()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
 
 jar {
