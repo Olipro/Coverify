@@ -14,7 +14,7 @@ import static org.testng.Assert.*;
 
 public class TestCoverify {
     private static final String json = "{\"version\":\"2.0.0\",\"type\":\"llvm.coverage.json.export\"," +
-            "\"data\":[{\"files\":[{\"filename\":\"/home/olipro/covtest.cpp\",\"segments\":[[6,22,2,1,1],[8,2,0,0,0]," +
+            "\"data\":[{\"files\":[{\"filename\":\"covtest.cpp\",\"segments\":[[6,22,2,1,1],[8,2,0,0,0]," +
             "[10,39,4,1,1],[11,6,4,1,1],[11,22,4,1,0],[11,23,1,1,0],[12,3,1,1,1],[12,11,3,1,0],[13,7,3,1,1],[13,11,3," +
             "1,1],[13,27,3,1,0],[13,28,1,1,0],[13,29,1,1,1],[17,3,2,1,0],[17,9,2,1,1],[17,13,2,1,1],[17,29,2,1,0]," +
             "[17,30,1,1,0],[17,31,1,1,1],[21,3,1,1,0],[21,9,1,1,1],[21,13,1,1,1],[21,29,1,1,0],[21,30,0,1,0],[21,31," +
@@ -27,12 +27,12 @@ public class TestCoverify {
             "7,24,3,3,0,0,0],[13,11,13,27,3,0,0,0],[13,28,13,29,1,0,0,3],[13,29,17,3,1,0,0,0],[17,3,17,9,2,0,0,3]," +
             "[17,9,24,3,2,0,0,0],[17,13,17,29,2,0,0,0],[17,30,17,31,1,0,0,3],[17,31,21,3,1,0,0,0],[21,3,21,9,1,0,0," +
             "3],[21,9,24,3,1,0,0,0],[21,13,21,29,1,0,0,0],[21,30,21,31,0,0,0,3],[21,31,24,3,0,0,0,0],[24,3,25,2,1,0," +
-            "0,3],[25,2,26,2,1,0,0,0]],\"filenames\":[\"/home/olipro/covtest.cpp\"]},{\"name\":\"main\",\"count\":1," +
-            "\"regions\":[[28,12,34,2,1,0,0,0]],\"filenames\":[\"/home/olipro/covtest.cpp\"]}," +
+            "0,3],[25,2,26,2,1,0,0,0]],\"filenames\":[\"covtest.cpp\"]},{\"name\":\"main\",\"count\":1," +
+            "\"regions\":[[28,12,34,2,1,0,0,0]],\"filenames\":[\"covtest.cpp\"]}," +
             "{\"name\":\"_Z11instantiateINSt3__16vectorIiNS0_9allocatorIiEEEEEiT_\",\"count\":1,\"regions\":[[6,22,8," +
-            "2,1,0,0,0]],\"filenames\":[\"/home/olipro/covtest.cpp\"]}," +
+            "2,1,0,0,0]],\"filenames\":[\"covtest.cpp\"]}," +
             "{\"name\":\"_Z11instantiateINSt3__14listIiNS0_9allocatorIiEEEEEiT_\",\"count\":1,\"regions\":[[6,22,8,2," +
-            "1,0,0,0]],\"filenames\":[\"/home/olipro/covtest.cpp\"]}],\"totals\":{\"lines\":{\"count\":27," +
+            "1,0,0,0]],\"filenames\":[\"covtest.cpp\"]}],\"totals\":{\"lines\":{\"count\":27," +
             "\"covered\":24,\"percent\":88},\"functions\":{\"count\":3,\"covered\":3,\"percent\":100}," +
             "\"instantiations\":{\"count\":4,\"covered\":4,\"percent\":100},\"regions\":{\"count\":15,\"covered\":14," +
             "\"notcovered\":1,\"percent\":93}}}]}";
@@ -42,7 +42,7 @@ public class TestCoverify {
             "\n" +
             "<coverage branch-rate=\"0.9333333333333333\" branches-covered=\"14\" branches-valid=\"15\" complexity=\"0.0\" line-rate=\"0.8888888888888888\" lines-covered=\"24\" lines-valid=\"27\" timestamp=\"0\" version=\"LLVMToCobertura v0.1.0\">\n" +
             "    <packages>\n" +
-            "        <package branch-rate=\"0.9333333333333333\" complexity=\"0.0\" line-rate=\"0.8888888888888888\" name=\"\\home\\olipro\">\n" +
+            "        <package branch-rate=\"0.9333333333333333\" complexity=\"0.0\" line-rate=\"0.8888888888888888\" name=\".\">\n" +
             "            <classes>\n" +
             "                <class branch-rate=\"0.9333333333333333\" complexity=\"0.0\" filename=\"covtest.cpp\" line-rate=\"0.8888888888888888\" name=\"covtest_cpp\">\n" +
             "                    <lines>\n" +
@@ -74,7 +74,7 @@ public class TestCoverify {
             "        </package>\n" +
             "    </packages>\n" +
             "    <sources>\n" +
-            "        <source>\\home\\olipro</source>\n" +
+            "        <source>.</source>\n" +
             "    </sources>\n" +
             "</coverage>\n";
 
@@ -107,7 +107,7 @@ public class TestCoverify {
             "\n" +
             "<coverage branch-rate=\"100.0\" branches-covered=\"15\" branches-valid=\"15\" complexity=\"0.0\" line-rate=\"100.0\" lines-covered=\"29\" lines-valid=\"29\" timestamp=\"0\" version=\"LLVMToCobertura v0.1.0\">\n" +
             "    <packages>\n" +
-            "        <package branch-rate=\"100.0\" complexity=\"0.0\" line-rate=\"100.0\" name=\"\\home\\olipro\">\n" +
+            "        <package branch-rate=\"100.0\" complexity=\"0.0\" line-rate=\"100.0\" name=\"/home/olipro\">\n" +
             "            <classes>\n" +
             "                <class branch-rate=\"100.0\" complexity=\"0.0\" filename=\"covtest.cpp\" line-rate=\"100.0\" name=\"covtest_cpp\">\n" +
             "                    <lines>\n" +
@@ -139,7 +139,7 @@ public class TestCoverify {
             "        </package>\n" +
             "    </packages>\n" +
             "    <sources>\n" +
-            "        <source>\\home\\olipro</source>\n" +
+            "        <source>/home/olipro</source>\n" +
             "    </sources>\n" +
             "</coverage>\n";
 
@@ -197,6 +197,8 @@ public class TestCoverify {
         }
         var str = new String(out.toByteArray(), "UTF-8");
         str = str.replaceAll("timestamp=\"[0-9]+\"", "timestamp=\"0\"");
+        if (File.separatorChar == '\\')
+            str = str.replace("\\home\\olipro", "/home/olipro");
         assertEquals(str, xml_fullCoverage);
     }
 
