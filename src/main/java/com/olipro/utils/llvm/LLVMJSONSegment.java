@@ -19,9 +19,17 @@ public class LLVMJSONSegment {
             ret.line = elems.get(0).getAsLong();
             ret.column = elems.get(1).getAsInt();
             ret.count = elems.get(2).getAsInt();
-            ret.hasCount = elems.get(3).getAsInt() != 0;
-            ret.isRegionEntry = elems.get(4).getAsInt() != 0;
+            try {
+                ret.hasCount = elems.get(3).getAsInt() != 0;
+            } catch (NumberFormatException numberFormatException) {
+                ret.hasCount = elems.get(3).getAsBoolean();
+            }
 
+            try {
+                ret.isRegionEntry = elems.get(4).getAsInt() != 0;
+            } catch (NumberFormatException numberFormatException) {
+                ret.isRegionEntry = elems.get(4).getAsBoolean();
+            }
             return ret;
         }
     }
