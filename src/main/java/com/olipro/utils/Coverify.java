@@ -2,10 +2,7 @@ package com.olipro.utils;
 
 import com.google.gson.GsonBuilder;
 import com.olipro.utils.cobertura.*;
-import com.olipro.utils.llvm.LLVMJSONRegion;
-import com.olipro.utils.llvm.LLVMJSONRoot;
-import com.olipro.utils.llvm.LLVMJSONSegment;
-import com.olipro.utils.llvm.LLVMJSONSummary;
+import com.olipro.utils.llvm.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -50,9 +47,7 @@ public class Coverify {
 
     Coverify(InputStreamReader file, OutputStream out) throws Exception {
         this.out = out;
-        var gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LLVMJSONSegment.class, new LLVMJSONSegment.LLVMJSONSegmentAdapter());
-        gsonBuilder.registerTypeAdapter(LLVMJSONRegion.class, new LLVMJSONRegion.LLVMJSONRegionAdapter());
+        GsonBuilder gsonBuilder = LLVMGsonBuilder.get();
         jaxb.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         json = gsonBuilder.create().fromJson(file, LLVMJSONRoot.class);
         if (!"2.0.0".equals(json.version))
